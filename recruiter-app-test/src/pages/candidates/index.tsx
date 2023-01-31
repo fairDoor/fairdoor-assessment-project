@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import { Typograhy } from "@mui/material";
 //helpers
 import { Loading} from "@fairdoor/shared-code";
 import { ICompany, IJobApplication } from "types/index";
@@ -9,7 +9,6 @@ import { useCollectionData } from "react-firebase-hooks/firestore";
 import { getCompanyApplicationsInAssessment } from "queries/applications";
 import { FirestoreError } from "firebase/firestore";
 
-import TextBlock from "components/UI/TextBlock";
 import ApplicationsTable from "components/Applications/ApplicationsTable";
 // HOC
 import { withCompanyData } from "components/Company/CompanyHOC";
@@ -50,7 +49,7 @@ const ApplicationsPage: React.FunctionComponent<IAuthProps> = (props) => {
       />
     );
   }
-  return <TextBlock text={t("application.noApplications")} />;
+  return <Typograhy>{t("application.noApplications")} </Typograhy>;
 };
 
 export default withUserData(withCompanyData(ApplicationsPage));
