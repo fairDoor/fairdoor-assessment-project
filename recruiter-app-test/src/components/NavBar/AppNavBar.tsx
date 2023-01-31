@@ -19,10 +19,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 // helpers
 import { routes } from "helpers/const";
-import {
-  getUserId,
-  showSnack,
-} from "helpers/helpers";
+import { getUserId, showSnack } from "helpers/helpers";
 // logo
 const Logo_black =
   "https://firebasestorage.googleapis.com/v0/b/fairdoor-app.appspot.com/o/fairdoor%2FLogo_black.png?alt=media&token=ea59c95a-8523-4c3b-b405-264ca768c8db";
@@ -135,8 +132,7 @@ function AppNavBar({ uid }: { uid: string | null | undefined }) {
       pages={uid ? [...pages, ...userPages] : [...pages, ...nonUserPages]}
       logo={{
         image: Logo_black,
-        onClick: () =>
-          router.push(`${routes.settings}?selected=${t("companyInfo.info")}`),
+        onClick: () => router.push(routes.home),
       }}
       theme={theme}
       currentPath={router.pathname}

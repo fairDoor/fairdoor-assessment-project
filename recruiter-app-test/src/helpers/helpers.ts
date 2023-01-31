@@ -1,12 +1,8 @@
-
 import { User } from "firebase/auth";
 import { IAuthMessage, ISnack } from "types/index";
-import { GridRowId } from "@mui/x-data-grid-pro";
-
 
 import { constants } from "@fairdoor/shared-code";
 const { authMessages } = constants;
-
 
 // eslint-disable-next-line no-prototype-builtins
 export const getUserId = (user: User | undefined | null): string | null =>
@@ -26,8 +22,6 @@ export const showSnack = (
 export const handleAuthMessages = (
   code: keyof typeof authMessages
 ): IAuthMessage => authMessages[code];
-
-
 
 export const removeUndefinedKey = (obj: Record<string, any>) => {
   Object.keys(obj).forEach((key: string) => {

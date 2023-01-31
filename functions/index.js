@@ -1,6 +1,5 @@
 "use strict";
 
-
 const functions = require("firebase-functions");
 const { admin } = require("./config/admin");
 const db = admin.firestore();
@@ -15,12 +14,10 @@ const collections = {
   recruiters: "recruiters",
 };
 
-
 const getStripeCustomerRef = (uid) =>
   db.collection(collections.customers).doc(uid);
 
 const stripe = require("stripe")(process.env.STRIPE_API_KEY);
-
 
 /** For examples, checkout
  * @see https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/functions/src
@@ -35,7 +32,7 @@ exports.createStripeExpressAccountForCandidates = functions.firestore
   .document("candidates/{candidateID}")
   .onCreate(async (snap) => {
     const candidate = snap.data();
-    const candidateName = `${candidate.firstName} ${candidate.lastName}`
+    const candidateName = `${candidate.firstName} ${candidate.lastName}`;
 
     const statement = `${candidateName}`
       .replace(/[^a-z0-9]/gi, " ")
@@ -75,20 +72,14 @@ exports.createStripeExpressAccountForCandidates = functions.firestore
     return;
   });
 
-
-
 /**
  * To deploy functions do on the terminal
  * firebase deploy --only functions:<NAME OF YOUR FUNCTION>
  */
 
-
-
 /**
  * Generate an invoice on call on behalf of a candidate to a Stripe customer
  */
-
-
 
 /**
  * Webhook to retrieve payment information and store them in the collection

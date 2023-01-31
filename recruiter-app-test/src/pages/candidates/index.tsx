@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Typograhy } from "@mui/material";
+import { Typography } from "@mui/material";
 //helpers
-import { Loading} from "@fairdoor/shared-code";
+import { Loading } from "@fairdoor/shared-code";
 import { ICompany, IJobApplication } from "types/index";
 import { useTranslation } from "next-i18next";
 // firestore
@@ -34,7 +34,7 @@ export interface IAuthProps {
 const ApplicationsPage: React.FunctionComponent<IAuthProps> = (props) => {
   const { t } = useTranslation(["common", "backend"]);
 
-  const { companyData, } = props;
+  const { companyData } = props;
 
   const qApplications = getCompanyApplicationsInAssessment(companyData.id);
   const [applications, loadingApp, errorApp] = useCollectionData(
@@ -43,13 +43,11 @@ const ApplicationsPage: React.FunctionComponent<IAuthProps> = (props) => {
   ) as [IJobApplication[] | undefined, boolean, FirestoreError | undefined];
   if (loadingApp) return <Loading error={errorApp} />;
   else if (applications) {
-    return (
-      <ApplicationsTable
-        rows={applications}
-      />
-    );
+    return <ApplicationsTable rows={applications} />;
   }
-  return <Typograhy>{t("application.noApplications")} </Typograhy>;
+  return (
+    <Typography variant="h4"> {t("application.noApplications")} </Typography>
+  );
 };
 
 export default withUserData(withCompanyData(ApplicationsPage));

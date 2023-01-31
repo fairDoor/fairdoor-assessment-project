@@ -111,7 +111,6 @@ export const authMethods: IAuthMethods = {
       .then(() => {
         return signInWithEmailAndPassword(auth, email, password)
           .then(async () => {
-
             clbck(handleAuthMessages(LOGIN_SUCCESS));
           })
           .catch((error: ICodeBackend) => {

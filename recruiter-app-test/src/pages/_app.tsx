@@ -11,12 +11,10 @@ import Stack from "@mui/material/Stack";
 import { ThemeProvider } from "@mui/material/styles";
 
 // shared code
-import { theme, Loading, } from "@fairdoor/shared-code";
+import { theme, Loading } from "@fairdoor/shared-code";
 import "../styles/main.scss";
 
 function App({ Component, pageProps }: AppProps) {
-
-
   if (typeof window !== "undefined") {
     return (
       <>
@@ -25,14 +23,11 @@ function App({ Component, pageProps }: AppProps) {
         </Head>
 
         <ThemeProvider theme={theme}>
-
-            <SnackProvider>
-
-              <AppBar>
-                <Component {...pageProps} />
-              </AppBar>
-            </SnackProvider>
-
+          <SnackProvider>
+            <AppBar>
+              <Component {...pageProps} />
+            </AppBar>
+          </SnackProvider>
         </ThemeProvider>
       </>
     );

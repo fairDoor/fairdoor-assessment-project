@@ -6,4 +6,3 @@ export const routes = {
   passwordReset: "/auth/passwordReset",
   signout: "/auth/signout",
 };
-

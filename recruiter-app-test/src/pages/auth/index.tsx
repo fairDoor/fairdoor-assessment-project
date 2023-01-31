@@ -5,15 +5,10 @@ import ContactForm from "components/Forms/ContactForm";
 import { useTheme } from "@mui/material/styles";
 import { Paper, Stack, Typography, Button } from "@mui/material";
 
-// auth
-import { auth } from "config/firebaseInit";
-import { useAuthState } from "react-firebase-hooks/auth";
-
 // shared
 import {
   LabTab,
   commonHelpers,
-  Loading,
   LoginForm,
   PasswordResetForm,
 } from "@fairdoor/shared-code";
@@ -53,10 +48,8 @@ const Auth = () => {
 
   const [resetPwd, setResetPwd] = React.useState<boolean>(false);
   const [pwdReset, setPwdreset] = React.useState<boolean>(false);
-  const [user, loading] = useAuthState(auth);
 
   const { setSnack } = useSnack();
-  if (loading) return <Loading />;
 
   const redirectPath = {
     [routes.home]: () => router.push(returnUrl || routes.candidates),
@@ -75,9 +68,7 @@ const Auth = () => {
       setResetPwd(false);
       setPwdreset(true);
     } else if (signup) {
-      router.push(
-        returnUrl || `${routes.settings}?selected=${t("companyInfo.info")}`
-      );
+      router.push(returnUrl || routes.home);
     } else {
       (router.query.returnUrl && router.push(returnUrl)) ||
         redirectPath[path]();
@@ -149,7 +140,7 @@ const Auth = () => {
       value: `${routes.login}?signup=true`,
       label: t("account.signup"),
       element: <SignUp />,
-    }
+    },
   ] as {
     index: string;
     value: string;

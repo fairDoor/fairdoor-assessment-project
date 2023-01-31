@@ -1,8 +1,5 @@
 import { db } from "config/firebaseInit";
-import {
-  doc,
-  setDoc,
-} from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { IRecruiterForm } from "types/index";
 
 import { constants } from "@fairdoor/shared-code";

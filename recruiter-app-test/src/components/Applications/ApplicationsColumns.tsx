@@ -12,16 +12,14 @@ import {
 import { Stack, Tooltip, Box, Button } from "@mui/material";
 
 //helpers
-import { TranslationT, IApplicationStatus } from "types/index";
+import { TranslationT, IApplicationStatus, IJobApplication } from "types/index";
 import {
   constants,
   ApplicationStatus,
   commonHelpers,
 } from "@fairdoor/shared-code";
-const {  COLUMN_JOB, COLUMN_CANDIDATE } = constants;
+const { COLUMN_JOB, COLUMN_CANDIDATE } = constants;
 const { getBackendLabel } = commonHelpers;
-
-
 
 export const SingleSelectCellWrapper = ({
   children,
@@ -62,7 +60,6 @@ export function renderSelect(
     </SingleSelectCellWrapper>
   );
 }
-
 
 const applicationsColumns = ({
   onClickPayCandidate,

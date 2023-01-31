@@ -9,7 +9,7 @@ repos:
       - id: eslint
         args: ["--fix"]
         name: eslint
-        entry: ./node_modules/.bin/eslint
+        entry: bash -c "cd recruiter-app-test && npx eslint --fix 'src/'"
         language: system
         files: \.tsx?$
   - repo: local
@@ -19,7 +19,7 @@ repos:
       # sudo sysctl fs.inotify.max_user_watches=65536
       - id: typescript
         name: typescript
-        entry: tsc
+        entry: tsc -p ./recruiter-app-test/tsconfig.json
         language: system
         files: \.tsx?$
         pass_filenames: false

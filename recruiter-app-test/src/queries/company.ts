@@ -5,7 +5,7 @@ import {
   serverTimestamp,
   collection,
   query,
-  where
+  where,
 } from "firebase/firestore";
 import { ICompanyForm } from "types/index";
 
@@ -17,7 +17,6 @@ export const getUserCompanyQuery = (uid: string) => {
   const companyRef = collection(db, collectionNames.companies);
   return query(companyRef, where("members", "array-contains", uid));
 };
-
 
 export const createCompany = async (
   uid: string,
@@ -42,4 +41,3 @@ export const createCompany = async (
 
   return await setDoc(newCompanyDocRef, companyInfo);
 };
-
