@@ -1,0 +1,218 @@
+{
+  "navbar": {
+    "howitworks": "How it works",
+    "inbox": "inbox",
+    "candidate": "I am a candidate"
+  },
+  "account": {
+    "login": "Sign in",
+    "signup": "Sign up",
+    "signout": "Sign out",
+    "settings": "Account settings",
+    "profile": "Profile",
+    "forgotPwd": "forgot your password?",
+    "resetPwd": "reset your password",
+    "checkEmail": "Check your email to reset your password"
+  },
+  "applicationSearch": {
+    "uid": "Filter by name",
+    "status": "Filter by status",
+    "jobId": "Filter by job title",
+    "companyId": "Filter by company",
+    "action": "Filter by action"
+  },
+  "application": {
+    "uid": "candidate name",
+    "action": "action",
+    "status": "status",
+    "jobId": "job position",
+    "companyId": "company",
+    "note": "Your notes about {{name}}",
+    "noApplications": "There is no application yet. Check that your job offers are published.",
+    "messageArchive": "Write to the candidate the reasons for archiving her application. This message will be sent to the candidate via Fairdoor inbox.",
+    "archiveReason": "Reason to archive"
+  },
+  "assessmentForm": {
+    "name": "Assessment name",
+    "description": "Assessment description",
+    "skills": "Assessed skills",
+    "jobCategories": "Related job categories",
+    "salary": "Compensation",
+    "currency": "Currency",
+    "descriptionLabel": "Start describing what the assessment will look like...",
+    "tags": "Assessment tags",
+    "compensation": "Assessment compensation and duration",
+    "duration": "Duration (in hours)"
+  },
+  "assessmentList": {
+    "name": "Assessments",
+    "getList": "See all assessments",
+    "noAssessments": "There are no assessments.",
+    "new": "New assessment",
+    "selected": "Selected assessments"
+  },
+  "billing": {
+    "name": "Billing soon!",
+    "onboarding": "Create a Stripe account"
+  },
+  "candidateApp": {
+    "link": "Candidate Space"
+  },
+  "candidates": {
+    "name": "Candidates",
+    "all": "All candidates",
+    "ongoing": "Ongoing candidates",
+    "notHired": "Archived candidates",
+    "viewNotHired": "View archived candidates"
+  },
+  "candidateProfile": {
+    "internalNotes": "Internal notes to Fairdoor",
+    "lookingFor": "candidate summary",
+    "achievements": "Track record and achievements"
+  },
+  "candidateForm": {
+    "myName": "name",
+    "myLinkedin": "linkedin",
+    "livein": "location",
+    "lookingfor": "The candidates is looking for a ",
+    "jobAt": " job at a",
+    "looking": "The candidates looking for a job",
+    "expectedSalary": "Expected annual salary (fixed + OTE)",
+    "firstName": "first name",
+    "lastName": "last name",
+    "linkedin": "linkedin",
+    "jobCat": "job category",
+    "jobLevel": "job level",
+    "salary": "salary",
+    "remote": "Remote preferences",
+    "autorizedInUS": "Authorized to work in the United States",
+    "visaRequired": "Sponsorship for a US employment visa",
+    "have": "In Sales, the candidate has",
+    "closingYears": "years of experience in a closing role",
+    "total": "in total",
+    "willingToRelocate": "Are you willing to relocate in the US?"
+  },
+  "common": {
+    "min": "minimum",
+    "max": "maximum",
+    "currency": "currency",
+    "empty": "empty",
+    "email": "email",
+    "password": "password",
+    "edit": "edit",
+    "save": "save",
+    "saveAsDraft": "save as draft",
+    "publish": "publish",
+    "unpublish": "unpublish",
+    "delete": "delete",
+    "cancel": "cancel",
+    "close": "close",
+    "and": "and",
+    "archive": "archive"
+  },
+  "companyInfo": {
+    "info": "Company",
+    "name": "Name",
+    "blockTitle": "Organization settings",
+    "description": "Description",
+    "submitMessage": "Update your organization info",
+    "aboutLocation": "Location and remote policy",
+    "mainLocation": "Main location",
+    "remotePolicy": "Remote policy",
+    "offices": "Offices soon!",
+    "workingTimezone": "Working time zone soon!",
+    "media": "Media",
+    "branding": "Branding",
+    "status": "Status"
+  },
+  "companyForm": {
+    "size": "Company size",
+    "sector": "Industry"
+  },
+  "contactForm": {
+    "submitMessage": "Sign up",
+    "title": "Create an account",
+    "switchMessage": "Already have an account? Sign in!",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phoneNumber": "Phone number",
+    "companyName": "Company name",
+    "email": "Your professional email",
+    "password": "Password"
+  },
+  "jobAssessment": {
+    "pick": "Pick one or more assessment(s) specific to your company for this new job offer",
+    "pickTemplate": "Or pick a generic assessment",
+    "new": "Add a new assessment",
+    "create": "Create a new assessment"
+  },
+  "jobForm": {
+    "title": "Job Title",
+    "description": "Job description",
+    "requirements": "Requirements",
+    "location": "Location",
+    "remote": "Remote",
+    "team": "Team",
+    "process": "Recruitment process",
+    "education": "Education",
+    "jobLevel": "Job level",
+    "jobCategory": "Job category",
+    "salary": "Salary",
+    "submitMessage": "save",
+    "saveAsDraft": "save as draft",
+    "publish": "publish",
+    "publishWarning": "This job can be published only if the title, description, requirements, hiring process, minimum salary, contract type, job category and job level have been filled and if at least one assessment has been selected.",
+    "contractType": "Type of contract",
+    "yearsOfExperience": "Minimum years of experience",
+    "benefits": "Perks and Benefits",
+    "salaryBlock": "Annual salary and compensation plan",
+    "totalSalary": "Total salary",
+    "compensationPlan": "Compensation Plan",
+    "base": "Base salary",
+    "bonus": "Bonus",
+    "bonusType": "Bonus type",
+    "equityShare": "Equity Share in %",
+    "equityValue": "Equity Value"
+  },
+  "jobPreview": {
+    "preview": "Preview of {{title}} position"
+  },
+  "jobList": {
+    "name": "Jobs",
+    "all": "job offers",
+    "getList": "See all jobs",
+    "nojobs": "There are no job offers.",
+    "new": "new job offer",
+    "confirmDelete": "Are you sure you want to delete this {{toDelete}}?"
+  },
+  "login": {
+    "submitMessage": "Sign in",
+    "switchMessage": "Don't have an account? Contact us!"
+  },
+  "offices": {
+    "name": "Offices soon!"
+  },
+  "passwordReset": {
+    "title": "Reset your password",
+    "submitMessage": "Reset your password",
+    "message": "Forgot your password?"
+  },
+  "preferencesForm": {
+    "workMotivations": "In a new role, the candidate values",
+    "sectors": "Favorite industries",
+    "companySize": "Ideal sizes of company"
+  },
+  "settings": {
+    "name": "Settings"
+  },
+  "support": {
+    "noCompany": "No company",
+    "candidates": "All candidates"
+  },
+  "teams": {
+    "name": "Team",
+    "membersList": "Team members",
+    "new": "Add a member",
+    "sendInvit": "Send email invitation"
+  }
+}
