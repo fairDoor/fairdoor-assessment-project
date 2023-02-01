@@ -1,12 +1,20 @@
-# Getting Started with Create React App
+# A minimal recruiter app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Set up your environment
 
-In the project directory, you can run:
+### `.env`
+You can find the env file that I shared with you on dashlane. It enables you to connect to Firestore staging
 
-### `npm start`
+
+### `npm install`
+This will install public packages and a private Fairdoor package, that contains a number of React components shared across Fairdoor platforms
+You need an npm auth token to download this library. This token is shared with you on Dashlane.
+In the file `.npmrc`you can replace NODE_AUTH_TOKEN by this token.
+Be careful, DO NOT COMMIT the .npmrc file with the value of this token.
+
+
+### Run `npm run dev`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,33 +22,22 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Don't deploy
+You won't be able to deploy as the hosting for this app is not configure and it is not the gol.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## What you can do with this app
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- sign in
+- sign up as a new company and a new recruiter
+- reset your password => put an email adress that enables you to receive an email with a reset link
+- in the page "/candidates", see the list of applications at the "assessment step" and click on the button "Pay candidate"
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## What you will build
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- when clicking on the "Pay candidate" button in the applications table, show a modal that list all assessments related to the application
+- enable the user to select assessments
+- enable the user to pay the candidate when clicking on the button "pay" in the modal.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
