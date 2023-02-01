@@ -17,7 +17,7 @@ const collections = {
 const getStripeCustomerRef = (uid) =>
   db.collection(collections.customers).doc(uid);
 
-const stripe = require("stripe")(process.env.STRIPE_API_KEY);
+const stripe = require("stripe")(functions.config().stripe.key);
 
 /** For examples, checkout
  * @see https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/functions/src
