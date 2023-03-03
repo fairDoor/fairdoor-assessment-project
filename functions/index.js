@@ -5,76 +5,85 @@ const { admin } = require("./config/admin");
 const db = admin.firestore();
 const log = (tolog) => functions.logger.log(tolog);
 
+const stripe = require("stripe")(functions.config().stripe.key);
+
 const collections = {
-  customers: "stripeCustomers",
+  stripePayments: "stripePayments", // collection to store payments
+  stripeCompanies: "stripeCompanies",
+  stripeCandidates: "stripeCandidates",
   candidates: "candidates",
   jobs: "jobs",
   jobApplications: "jobApplications",
   companies: "companies",
   recruiters: "recruiters",
+  assessments: "assessments",
 };
 
-const getStripeCustomerRef = (uid) =>
-  db.collection(collections.customers).doc(uid);
+const getStripeCandidateRef = (uid: string) =>
+  db.collection(collections.stripeCandidates).doc(uid);
 
-const stripe = require("stripe")(functions.config().stripe.key);
+const getStripeCompaniesRef = (companyId: string) =>
+  db.collection("stripeCompanies").doc(companyId);
 
-/** For examples, checkout
- * @see https://github.com/stripe/stripe-firebase-extensions/blob/master/firestore-stripe-payments/functions/src
- */
-
-/**
- * When a candidate is created, create a Stripe Express Account for them.
- *
- * @see https://stripe.com/docs/connect/express-accounts
- */
-exports.createStripeExpressAccountForCandidates = functions.firestore
-  .document("candidates/{candidateID}")
-  .onCreate(async (snap) => {
-    const candidate = snap.data();
-    const candidateName = `${candidate.firstName} ${candidate.lastName}`;
-
-    const statement = `${candidateName}`
-      .replace(/[^a-z0-9]/gi, " ")
-      .substring(0, 20);
-
-    const account = await stripe.accounts.create({
-      country: "US",
-      type: "express",
-      business_type: "individual",
-      business_profile: {
-        name: candidateName,
-        product_description: `Candidate Assessment ${candidateName}`,
+const createStripeCompany = async (companyId: string, companyName: string) => {
+  return await stripe.customers
+    .create({
+      name: companyName,
+      metadata: {
+        companyId: companyId,
       },
-      capabilities: {
-        card_payments: { requested: true },
-        transfers: { requested: true },
-      },
-      settings: {
-        payments: {
-          statement_descriptor: statement,
-        },
-      },
-      email: candidate.email,
-    });
-    try {
-      await getStripeCustomerRef(candidate.uid).set({
-        accountId: account.id,
+    })
+    .then(async (customer) => {
+      log(
+        `Stripe: created company account ${customer.id} for company ${companyId}`
+      );
+      await getStripeCompaniesRef(companyId).set({
+        stripeCompanyId: customer.id,
       });
+      return customer.id;
+    })
+    .catch(async (error) => {
+      log(`Stripe: Error in stripe company account creation: ${error}`);
+    });
+};
+
+const getOrCreateStripeCompanyId = async (
+  companyId: string,
+  companyName: string
+) => {
+  return await getStripeCompaniesRef(companyId)
+    .get()
+    .then(async (doc) => {
+      if (doc.exists) {
+        // check if stripe company account exists
+        const stripeCustomer = await stripe.customers.search({
+          // eslint-disable-next-line no-useless-escape
+          query: `name:\'${companyName}\'`,
+        });
+        if (Object.keys(stripeCustomer?.data).length !== 0) {
+          log(
+            `Stripe: account exists for company ${companyId}: ${
+              doc.data().stripeCompanyId
+            }`
+          );
+          return doc.data().stripeCompanyId;
+        } else {
+          return await createStripeCompany(companyId, companyName);
+        }
+      } else {
+        return await createStripeCompany(companyId, companyName);
+      }
+    })
+    .catch(async (error) => {
       log(
-        `Stripe: account created for candidate ${candidate.email}: ${account.id}`
+        `Stripe: Error in getStripeCompaniesRef for company ${companyId}: ${error}`
       );
-    } catch (error) {
-      log(
-        `Error in stripe account creation with candidate ${candidate.email} : ${error}`
-      );
-    }
-    return;
-  });
+    });
+};
 
 /**
- * To deploy functions do on the terminal
- * firebase deploy --only functions:<NAME OF YOUR FUNCTION>
+ * You can test your function with the following bash command:
+ * firebase emulators:start --only functions
  */
 
 /**
